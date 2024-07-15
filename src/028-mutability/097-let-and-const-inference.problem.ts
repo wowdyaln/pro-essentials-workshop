@@ -1,6 +1,7 @@
 // CODE
 
-let type = "button";
+const type = "button";
+// let type: ButtonAttributes["type"] = "button";
 
 // TESTS
 
