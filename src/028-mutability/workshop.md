@@ -34,6 +34,9 @@ Investigate why `buttonAttributes` is not assignable to `modifyButtons`. Try rep
 
 Why does this work?
 
+`Object.freeze` 只有一層，而且是在 runtime 時候才作用
+ `as const` 讓每一層都是 readonly
+
 ## Section 3
 
 ### 103 - Readonly Arrays
