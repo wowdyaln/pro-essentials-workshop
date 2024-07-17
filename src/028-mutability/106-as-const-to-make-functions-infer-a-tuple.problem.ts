@@ -1,6 +1,6 @@
 import { Equal, Expect } from "@total-typescript/helpers";
 
-const fetchData = async () => {
+const fetchData = async (): Promise<[Error | undefined, any?]> => {
   const result = await fetch("/");
 
   if (!result.ok) {
@@ -17,6 +17,6 @@ const example = async () => {
 
   type Tests = [
     Expect<Equal<typeof error, Error | undefined>>,
-    Expect<Equal<typeof data, any>>,
+    Expect<Equal<typeof data, any>>
   ];
 };
