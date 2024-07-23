@@ -2,9 +2,27 @@ import { Equal, Expect } from "@total-typescript/helpers";
 import { expect, it } from "vitest";
 
 const parseValue = (value: unknown) => {
-  if (true) {
+  if (
+    typeof value === "object" &&
+    value !== null &&
+    "data" in value &&
+    typeof value.data === "object" &&
+    value.data !== null &&
+    "id" in value.data &&
+    typeof value.data.id === "string"
+  ) {
     return value.data.id;
   }
+
+  /*
+And this would be a lot simpler and just be a single line of code using Zod.
+But knowing that you can do this, I think is a really nice exercise to understand
+that TypeScript has your back when you're doing this kind of narrowing.
+And unknown really is just like a massive union type of all of the possible things there are in TypeScript.
+And so if you know how to narrow unknown,
+then you're probably going to have a pretty easy job narrowing something that's a little bit clearer.
+
+*/
 
   throw new Error("Parsing error!");
 };
