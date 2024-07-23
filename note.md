@@ -58,3 +58,15 @@ Unknown sits at the very top of the type hierarchy in TypeScript. It is the top 
 
 ## 不學就不知道的地方：再複習一次 071-narrowing-in-different-scopes
 
+## 075-destructuring-a-discriminated-union
+結論： discriminated-union 就不要使用 destructure 語法了！多打一點字就好了！
+
+## The switch (true) Pattern in TypeScript (only been possible since TypeScript 5.3)
+This is actually only been possible since TypeScript 5.3. And you might be reading this or watching this in the future. Currently, this is on the beta version of TypeScript, which is coming out. So you can see how TypeScript kind of evolves through time and adds these kind of new changes, which is super duper cool.
+
+## 080-adding-defaults-to-discriminated-union
+不直覺，需要多想
+
+## 080.5-should-you-provide-function-return-types
+- 提供函式回傳型別可以幫助確保函式行為符合預期，特別是在處理多分支情況時。
+- 在簡單函式中，通常不需要使用回傳型別，因為這可能會導致不準確的型別
