@@ -1,4 +1,24 @@
-interface Scores {}
+//* 一般 寫法
+// type Scores = {
+//   [key: string]: number;
+//   math: number;
+//   english: number;
+//   science: number;
+// };
+
+//* interface 寫法
+interface Scores extends Record<string, number> {
+  math: number;
+  english: number;
+  science: number;
+}
+
+//* type 寫法
+// type Scores = {
+//   math: number;
+//   english: number;
+//   science: number;
+// } & Record<string, number>;
 
 // @ts-expect-error science is missing!
 const scores: Scores = {
