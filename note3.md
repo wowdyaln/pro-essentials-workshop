@@ -1,15 +1,13 @@
-# typescript-only-features
-
-## enum 看看就好
-about enums, I think.
-Maybe don't use them.
-
-But if you do have to use them,
-then don't use `const enums`, certainly.
+# deriving-types-from-values
+## 129-classes-cross-value-and-type-world
+`class` cross over between the value world and the type world,
+meaning that you can kind of use them in both. A really neat little feature
 
 
-## namespace 看看就好
-I really can't see much functionality for them, to be honest. Namespaces, I think, are kind of like a dead feature in TypeScript. You will encounter them because they're used to organize types that are in the global scope, for instance, like the Node.js types contain a lot of namespaces.
 
-**But in your application code, I would not advise using namespaces.**
+## 新觀念，`this` 可以當成 value 跟 type, 130-this-crosses-value-and-type-world
+哇！去看影片。
+
+## 新觀念，Using the Same Name for Values and Types in TypeScript
+131-naming-values-and-types-the-same
 
