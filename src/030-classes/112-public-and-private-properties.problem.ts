@@ -1,8 +1,13 @@
 import { expect, it } from "vitest";
 
 class CanvasNode {
-  x: number;
-  y: number;
+  // 方法1, 只有 typescript 才有的語法 private
+  private x: number;
+  private y: number;
+
+  // 方法2, javascript 的語法
+  // #x: number;
+  // #y: number;
 
   constructor(position?: { x: number; y: number }) {
     this.x = position?.x ?? 0;

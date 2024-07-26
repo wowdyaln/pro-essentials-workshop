@@ -8,6 +8,9 @@ Give the CanvasNode class two properties, `x` and `y`. Both properties should be
 
 https://www.typescriptlang.org/docs/handbook/2/classes.html#fields
 
+classes are just like objects, but just a little bit more powerful, a little bit more interesting in various directions. And we're gonna keep on covering them over the next few exercises.
+類別就像物件一樣，但只是更強大一點，在各個方面更有趣一點。我們將在接下來的幾個練習中繼續介紹它們。
+
 ### 109 - Class Methods
 
 Add a `move` method to the class which moves the node to that location.

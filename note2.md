@@ -37,3 +37,26 @@ type DistributiveOmit<T, K extends PropertyKey> = T extends any
   : never;
 
 ```
+
+
+# classes
+## 要使用到 `class extends` 的時候再參考：114-extending-other-classes
+
+## 114.5-override
+在 tsconfig.json 中加入如下設定,要覆蓋 extends 的 class 的 method，就要加入 `override`
+`"noImplicitOverride": true,`
+
+## 115-implementing-interfaces-or-types
+新的語法 `implements` 
+`class Shape implements IShape {}`  
+用來擴充類別的擴展
+
+影片的示範，更能感受到 **"classes are just like objects"**
+(108 - Understanding Classes Matt 提到的)
+
+`type IShape = {...}` 規範了物件該長什麼樣子
+`class Shape` 根據 IShape 的規範，實作細節。
+就醬子而已。
+
+
+## 再複習一次，116-this-in-functions-and-objects
