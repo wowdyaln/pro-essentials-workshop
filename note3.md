@@ -11,3 +11,15 @@ meaning that you can kind of use them in both. A really neat little feature
 ## 新觀念，Using the Same Name for Values and Types in TypeScript
 131-naming-values-and-types-the-same
 
+#
+## 新觀念! 146-satisfies
+重要觀念，要再複習
+
+## 新觀念! 147-satisfies-vs-as-vs-variable-annotations
+重要觀念，要再複習
+
+## 新觀念! 148-satisfies-with-as-const
+重要觀念，要再複習
+
+
+

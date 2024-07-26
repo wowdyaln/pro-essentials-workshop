@@ -12,20 +12,7 @@ type test = Expect<Equal<typeof obj.a, number>>;
 
 // 2
 
-const menuConfig: Record<
-  string,
-  | {
-      label: string;
-      link: string;
-    }
-  | {
-      label: string;
-      children: {
-        label: string;
-        link: string;
-      }[];
-    }
-> = {
+const menuConfig = {
   home: {
     label: "Home",
     link: "/home",
@@ -43,7 +30,20 @@ const menuConfig: Record<
       },
     ],
   },
-};
+} satisfies Record<
+  string,
+  | {
+      label: string;
+      link: string;
+    }
+  | {
+      label: string;
+      children: {
+        label: string;
+        link: string;
+      }[];
+    }
+>;
 
 type tests = [
   Expect<Equal<typeof menuConfig.home.label, string>>,
@@ -55,11 +55,11 @@ type tests = [
         link: string;
       }[]
     >
-  >,
+  >
 ];
 
 // 3
 
-const element = document.getElementById("app") satisfies HTMLElement;
+const element = document.getElementById("app") as HTMLElement;
 
 type test3 = Expect<Equal<typeof element, HTMLElement>>;
