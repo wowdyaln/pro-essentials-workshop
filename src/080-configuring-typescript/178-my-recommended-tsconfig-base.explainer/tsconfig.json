@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    /* Base Options: */
+    /* Base Options: 每個專案都應該的設置 */ 
     "skipLibCheck": true,
     "target": "es2022",
     "esModuleInterop": true, // Makes working with CommonJS easier
