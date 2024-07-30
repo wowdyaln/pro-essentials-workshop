@@ -2,17 +2,37 @@
 
 ## Section 1
 
-### 150 - Empty Object Type
+### 150 - Empty Object Type, 常用！
 
 See if you can find a type annotation for `input` that accepts any type except `null` or `undefined`.
 
-https://www.totaltypescript.com/the-empty-object-type-in-typescript
+- [The Empty Object Type in TypeScript | Total TypeScript](https://www.totaltypescript.com/the-empty-object-type-in-typescript)
 
-### 152 - Excess Properties Warnings
+- 解說：[The Empty Object Type | Total TypeScript](https://www.totaltypescript.com/workshops/typescript-pro-essentials/the-weird-parts-of-typescript/accept-anything-except-null-or-undefined/solution)
+
+使用空物件型別（`{}`）在以下情況下可能會比較有用：
+1. **函式參數**：使用 `{}` 可以避免傳入原始類型（如 `string`、`number` 等）。（不過只是傳入空物件能幹嘛？也不能幹嘛）
+
+2. **泛型約束**：這個才實用！！確保傳入的參數不是 `null` 或 `undefined` 
+
+   ```typescript
+   const myGenericFunc = <T extends {}>(t: T) => { return t; };
+   ```
+
+### 表示一個真正的空物件
+應該使用 `Record<PropertyKey, never>`
+
+
+### 152 - Excess Properties Warnings 這個行爲真的很奇怪！！！
 
 Inside our `options` object, we're specifying a `search` property. We then pass it to `myFetch`, which doesn't accept a `search` property (on the `FetchOptions` interface).
 
 Why isn't TypeScript erroring here? How can we get it to error by adding some annotations/changing the code?
+
+
+- TypeScript 的類型模型是基於結構的。即使物件存在額外的屬性,只要滿足所需要的屬性,TypeScript 也不會提出警告。
+- 要觸發超出屬性檢查,可以透過以下方式:1. 為變數添加類型註解、2. 使用 `satisfies` 關鍵字、3. 將變數直接內嵌到函數呼叫中。
+- TypeScript 預設不檢查超出屬性,因為這樣的做法更加實用。如果強制檢查,在某些情況下需要手動移除多餘的屬性,可能會造成困擾。
 
 ### 153 - Excess Property Warnings In Functions
 
@@ -21,6 +41,17 @@ We're mapping over some users in `users.map`. The variable that the mapping gets
 But inside the map, we're able to pass an extra `age` property without TypeScript erroring. How?
 
 See if you can fix this by adding some annotations/changing the code.
+
+1. **TypeScript 的寬鬆性**：TypeScript 不會自動檢查物件中的額外或意外屬性，這在運行時通常不會造成問題，但在某些情況下可能會導致錯誤。
+
+2. **`Object.keys` 的限制**：`Object.keys` 返回的是一個 `string[]`，並不能保證包含所有預期的屬性，這使得開發者無法確定返回的鍵是否正確。
+
+3. **`Object.entries` 的行為**：`Object.entries` 返回一個鍵為 `string`、值為 `any` 的陣列，這也可能讓開發者感到困惑。
+
+4. **物件類型的處理**：TypeScript 在處理物件類型時相對保守，這是為了避免不必要的錯誤，但也導致了對於物件屬性檢查的限制。
+
+這些特性使得 TypeScript 在某些情況下顯得不夠精確，開發者需要更加注意物件的結構與類型。
+
 
 ## Section 2
 
