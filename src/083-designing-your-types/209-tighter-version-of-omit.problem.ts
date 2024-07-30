@@ -1,6 +1,6 @@
 import { Equal, Expect } from "@total-typescript/helpers";
 
-type StrictOmit<T, K> = Omit<T, K>;
+type StrictOmit<T, K extends keyof T> = Omit<T, K>;
 
 type ShouldFail = StrictOmit<
   { a: string },
@@ -13,5 +13,5 @@ type tests = [
   Expect<Equal<StrictOmit<{ a: string; b: number }, "b" | "a">, {}>>,
   Expect<
     Equal<StrictOmit<{ a: string; b: number }, never>, { a: string; b: number }>
-  >,
+  >
 ];

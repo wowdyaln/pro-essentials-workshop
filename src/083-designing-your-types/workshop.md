@@ -32,7 +32,7 @@ Add two type parameters to `PromiseFunc` to make the errors go away.
 
 ## Section 2
 
-### 206 - Result Type
+### 206 - Result Type, Handle Errors with a Generic Result Type。這個模式要學起來，可避免 try/catch 複雜的處理方式。
 
 One way to avoid throwing errors in TypeScript is to use a `Result` type. Take a look at the `createRandomNumber` function, and debate whether you think this code is more readable/maintainable than a `try/catch` would be.
 
@@ -81,6 +81,8 @@ Hint - the result is easier than you think!
 ## Section 5
 
 ### 212 - Mapped Types
+
+[Mapped Types | Total TypeScript](https://www.totaltypescript.com/concepts/mapped-type)
 
 Define `AttributeGetters` so that it matches the test below.
 

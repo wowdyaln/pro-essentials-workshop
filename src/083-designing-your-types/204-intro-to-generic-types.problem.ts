@@ -6,25 +6,23 @@ type ErrorShape = {
   };
 };
 
-type UserDataShape =
+type DataShape<T> =
   | {
-      data: {
-        id: string;
-        name: string;
-        email: string;
-      };
+      data: T;
     }
   | ErrorShape;
 
-type PostDataShape =
-  | {
-      data: {
-        id: string;
-        title: string;
-        body: string;
-      };
-    }
-  | ErrorShape;
+type UserDataShape = DataShape<{
+  id: string;
+  name: string;
+  email: string;
+}>;
+
+type PostDataShape = DataShape<{
+  id: string;
+  title: string;
+  body: string;
+}>;
 
 // TESTS
 
@@ -62,5 +60,5 @@ type tests = [
           };
         }
     >
-  >,
+  >
 ];
