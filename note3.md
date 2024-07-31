@@ -11,7 +11,7 @@ meaning that you can kind of use them in both. A really neat little feature
 ## 新觀念，Using the Same Name for Values and Types in TypeScript
 131-naming-values-and-types-the-same
 
-#
+# annotations-and-assertions
 ## 新觀念! 146-satisfies
 重要觀念，要再複習
 

@@ -2,7 +2,12 @@ import { Equal, Expect } from "@total-typescript/helpers";
 
 type Event = "click" | "hover" | "scroll";
 
-type CallbackType = unknown;
+type CallbackType = (
+  event: Event,
+  x: number,
+  y: number,
+  screenId: number
+) => void;
 
 const listenToEvent = (callback: CallbackType) => {};
 
@@ -16,7 +21,7 @@ listenToEvent((event, x, y) => {
   type tests = [
     Expect<Equal<typeof event, Event>>,
     Expect<Equal<typeof x, number>>,
-    Expect<Equal<typeof y, number>>,
+    Expect<Equal<typeof y, number>>
   ];
 });
 
@@ -25,6 +30,6 @@ listenToEvent((event, x, y, screenId) => {
     Expect<Equal<typeof event, Event>>,
     Expect<Equal<typeof x, number>>,
     Expect<Equal<typeof y, number>>,
-    Expect<Equal<typeof screenId, number>>,
+    Expect<Equal<typeof screenId, number>>
   ];
 });

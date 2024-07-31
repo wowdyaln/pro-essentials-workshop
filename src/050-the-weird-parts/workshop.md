@@ -69,6 +69,40 @@ Some ground rules - you can't use `Object.values`, or `Object.entries`. Try usin
 
 You might need to change some of the types, or use a type assertion. `keyof` may also come in handy.
 
+### 154.8-evolving-any
+Evolving any 通常在以下情況下比常見的 any 更適合使用：
+
+1. 變數初始化時未賦值：
+   當你宣告一個變數但不立即賦值時，例如：
+   ```typescript
+   let x;  // 這裡 x 是 Evolving any
+   ```
+
+2. 需要動態型別但仍想保持一定程度的型別檢查：
+   Evolving any 允許變數根據賦值改變型別，但仍保留一些型別檢查。
+
+3. 處理來自外部或動態來源的資料：
+   當你不確定資料的確切型別，但希望根據實際使用推斷型別時。
+
+4. 逐步遷移 JavaScript 到 TypeScript：
+   在轉換過程中，Evolving any 可以幫助逐步引入型別，而不需立即指定所有型別。
+
+5. 提高程式碼靈活性：
+   當你需要一個變數在不同情況下接受不同型別，但又不想完全放棄型別檢查時。
+
+相比之下，常見的 any 通常用於：
+
+- 明確知道需要完全跳過型別檢查的情況。
+- 處理完全未知或極其複雜的資料結構。
+- 與不支援 TypeScript 的第三方庫交互時。
+
+Evolving any 提供了一個在完全動態（any）和嚴格型別之間的平衡，適合需要一定靈活性但又不想完全放棄型別安全的場景。
+
+### 155-function-parameter-comparisons
+**callback 類型定義**：可以定義 callback 類型，使其接受不同數量的參數，**但實際上函數實作時不需要使用所有參數**。
+**參數忽略**：函數可以選擇忽略傳入的參數，只需關注必要的部分，例如在使用`map()`方法時，callback 函數可以只處理 element 而忽略 index。
+
+
 ## Section 3
 
 ### 155 - Comparing Function Parameters
@@ -84,6 +118,17 @@ See if you can figure out the correct way to type `CallbackType` to make the Typ
 In our `loggers` array, we have two functions. One takes in an object with an `id` property, and the other takes in an object with a `name` property.
 
 Figure out the correct type for the `obj` parameter in `logAll`.
+
+1. **函數的類型**：
+   - 在 `loggers.forEach()` 中，`func` 是兩種不同函數類型的聯合。
+   - 一個函數接受 `id` 字串，另一個接受 `name` 字串。
+
+2. **聯合類型的限制**：
+   - 嘗試將參數定義為聯合類型（如 `{ id: string } | { name: string }`）會導致 TypeScript 認為 `func` 必須同時接受兩者，這是錯誤的。
+
+3. **交集類型的解決方案**：
+   - 使用交集類型（如 `{ id: string } & { name: string }`）或直接使用一個包含兩者的物件作為參數，這樣可以正確處理函數的多樣性。
+   - TypeScript 不會因為多餘的屬性而報錯，這符合 JavaScript 函數的行為，因為它們會忽略不必要的參數。
 
 ### 157 - Unions of Functions With Incompatible Parameters
 

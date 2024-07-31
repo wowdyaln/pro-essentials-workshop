@@ -5,7 +5,18 @@ interface User {
   name: string;
 }
 
-function printUser(user: User) {}
+// function printUser(user: User) {
+//   for (const key in user) {
+//     console.log(user[key as keyof User]);
+//   }
+// }
+
+// 方法2
+function printUser(user: Record<string, any>) {
+  for (const key in user) {
+    console.log(user[key]);
+  }
+}
 
 it("Should log all the keys of the user", () => {
   const consoleSpy = vitest.spyOn(console, "log");
