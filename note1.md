@@ -9,10 +9,10 @@
 
 # IDE superpowers
 ## 044-manually-triggering-autocomplete.problem
-使用 Option ⌥ + Esc (Mac) 就可以開啓 autocomplete。
+使用 `Option ⌥ + Esc (Mac)` 就可以開啓 autocomplete。
 
 ## 049-organize-imports
-有用不到的 import 變數，開啓 vscode command input, 輸入 `Organize Imports`，就可以把 import 變數整理好。
+有用不到的 import 變數，開啓 vscode command input, 輸入 `Organize Imports`，就可以把 import 變數整理好。(還能按照字母排序)
 
 
 ## 050-refactor 非常實用的工具，去看影片。
@@ -28,7 +28,32 @@
 
 
 ## 再複習一次 061-map-has-doesnt-narrow-map-get
+   - TypeScript 無法理解 Map 的 .has() 和 .get() 方法之間的關係。
+   - 使用 .has() 方法後，TypeScript 仍然認為 .get() 可能返回 undefined。
 
+2. 原因分析：
+   - Map 的 .has() 方法只返回布林值。
+   - TypeScript 無法將這個布林值與 Map 的內容關聯起來。
+
+3. 解決方案：
+   - 將 Map 的值提取到一個常數中。
+   - 使用條件語句檢查該常數是否存在。
+   - 利用 TypeScript 的作用域推斷來縮小類型。
+
+4. 代碼示例：
+   ```typescript
+   const processUserMap = (eventMap: Map<string, Event>) => {
+     const event = eventMap.get("error");
+     if (event) {
+       const message = event.message;
+       throw new Error(message);
+     }
+   };
+   ```
+
+5. 優點：
+   - 這種方法更符合 TypeScript 的類型推斷邏輯。
+   - 避免了直接使用 .has() 和 .get() 方法可能帶來的類型問題。
 
 
 ## 再複習一次 062-throwing-errors-to-narrow
