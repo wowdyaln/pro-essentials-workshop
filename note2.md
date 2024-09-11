@@ -29,6 +29,10 @@
 
 ## 新觀念，093-omit-cant-distribute
 Omit 在處理 union type 時，不會逐一遍歷每個成員，而是將 union type 合併成一個結構再進行操作。這導致 Omit 無法如預期地從 union type 中移除特定屬性，僅保留共同屬性。
+
+以下2個 helper type 可以確保在使用Omit和Pick時,能夠按預期操作聯合類型的每個成員,從而獲得更可預測的結果
+
+## DistributiveOmit
 Matt 寫了一個可以從 union type 中移除特定屬性的定義：
 
 ```ts
@@ -37,6 +41,15 @@ type DistributiveOmit<T, K extends PropertyKey> = T extends any
   : never;
 
 ```
+
+## DistributivePick
+Sep 11, 2024 (from email)
+可以將Pick操作分配到聯合類型的每個成員,從而更準確地選擇屬性
+
+```ts
+type DistributivePick<T, K extends keyof T> = T extends any ? Pick<T, K> : never;
+```
+
 
 
 # classes

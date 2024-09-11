@@ -49,11 +49,12 @@ So `as never` has a kind of like a union of functions handling that makes the mo
 
 
 
-## union of functions 新觀念記起來！
+## union of functions 新觀念, 多思考！ 158-unions-of-function-return-types
 when you have a union of functions,
 the parameters get intersected and the return types get unioned.
 
 Union of Functions 心智模型：**參數 type intersected， 回傳 type unioned.**
+
 
 ## 新觀念! 158.5-annotating-errors-a-function-throws
 TypeScript 不支援用 `throws` 語法來描述函數可能拋出的錯誤，也無法直接註解 catch 區塊中的錯誤類型。雖然可以使用 `instanceof` 來檢查錯誤類型，但這需要函數使用者自行處理錯誤。
